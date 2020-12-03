@@ -143,8 +143,8 @@ SalesMessengerEditor.defaultConfig = {
 			'mediaEmbed',
 			'|',
 			'removeFormat',
-			'|',
-			'restrictedEditing'
+			// '|',
+			// 'restrictedEditing'
 		]
 	},
 	image: {
@@ -160,6 +160,16 @@ SalesMessengerEditor.defaultConfig = {
 			'tableColumn',
 			'tableRow',
 			'mergeTableCells'
+		]
+	},
+	mediaEmbed: {
+		providers: [
+			'youtube',
+			'vimeo',
+			'instagram',
+			'twitter',
+			'googleMaps',
+			'facebook'
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
