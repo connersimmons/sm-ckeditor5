@@ -80,6 +80,7 @@
     "@ckeditor/ckeditor5-remove-format": "^23.1.0",
     "@ckeditor/ckeditor5-restricted-editing": "^23.1.0",
     "@ckeditor/ckeditor5-special-characters": "^23.1.0",
+    "@ckeditor/ckeditor5-watchdog": "^23.1.0",
     "@ckeditor/ckeditor5-word-count": "^23.1.0"
   }
 }
