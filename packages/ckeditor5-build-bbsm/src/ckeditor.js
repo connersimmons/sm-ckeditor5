@@ -53,10 +53,10 @@ import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 import Watchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog.js';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+class SalesMessengerEditor extends ClassicEditor {}
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+SalesMessengerEditor.builtinPlugins = [
 	Alignment,
 	Autoformat,
 	Autolink,
@@ -107,7 +107,7 @@ ClassicEditor.builtinPlugins = [
 ];
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+SalesMessengerEditor.defaultConfig = {
 	toolbar: {
 		items: [
 			'undo',
@@ -166,4 +166,4 @@ ClassicEditor.defaultConfig = {
 	language: 'en'
 };
 
-export default { ClassicEditor, Watchdog };
+export default { SalesMessengerEditor, Watchdog };
