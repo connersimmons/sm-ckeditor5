@@ -56,10 +56,10 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+export default class BBSMEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+BBSMEditor.builtinPlugins = [
 	Alignment,
 	Autoformat,
 	Autolink,
@@ -111,7 +111,7 @@ ClassicEditor.builtinPlugins = [
 ];
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+BBSMEditor.defaultConfig = {
 	toolbar: {
 		items: [
 			'undo',

@@ -6,9 +6,9 @@
 /* eslint-env commonjs */
 /* globals window, document, console */
 
-const ClassicEditor = require( '../../build/ckeditor' );
+const BBSMEditor = require( '../../build/ckeditor' );
 
-ClassicEditor.create( document.querySelector( '#editor' ) )
+BBSMEditor.create( document.querySelector( '#editor' ) )
 	.then( editor => {
 		window.editor = editor;
 	} )
