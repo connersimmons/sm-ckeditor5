@@ -3,7 +3,9 @@
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
+// The editor creator to use.
+import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
 import Autolink from '@ckeditor/ckeditor5-link/src/autolink.js';
@@ -33,8 +35,8 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle.js';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
-import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
+// import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
+// import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat.js';
@@ -51,9 +53,9 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
-import Watchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog.js';
+// import Watchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog.js';
 
-class SalesMessengerEditor extends ClassicEditor {}
+export default class SalesMessengerEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 SalesMessengerEditor.builtinPlugins = [
@@ -86,8 +88,8 @@ SalesMessengerEditor.builtinPlugins = [
 	LinkImage,
 	List,
 	ListStyle,
-	MediaEmbed,
-	MediaEmbedToolbar,
+	// MediaEmbed,
+	// MediaEmbedToolbar,
 	Paragraph,
 	PasteFromOffice,
 	RemoveFormat,
@@ -140,7 +142,7 @@ SalesMessengerEditor.defaultConfig = {
 			'|',
 			'htmlEmbed',
 			'imageInsert',
-			'mediaEmbed',
+			// 'mediaEmbed',
 			'|',
 			'removeFormat',
 			// '|',
@@ -162,18 +164,18 @@ SalesMessengerEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
-	mediaEmbed: {
-		providers: [
-			'youtube',
-			'vimeo',
-			'instagram',
-			'twitter',
-			'googleMaps',
-			'facebook'
-		]
-	},
+	// mediaEmbed: {
+	// 	providers: [
+	// 		'youtube',
+	// 		'vimeo',
+	// 		'instagram',
+	// 		'twitter',
+	// 		'googleMaps',
+	// 		'facebook'
+	// 	]
+	// },
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
 
-export default { SalesMessengerEditor, Watchdog };
+// export default { SalesMessengerEditor, Watchdog };

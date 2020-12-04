@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>CKEditor 5 – bbsm editor build – development sample</title>
+		<title>[DEV] Blue Book Sales Messenger - Classic Editor</title>
 		<style>
 			body {
 				max-width: 800px;
@@ -11,13 +11,13 @@
 		</style>
 	</head>
 	<body>
-		<h1>CKEditor 5 – bbsm editor build – development sample</h1>
+		<h1>[DEV] Blue Book Sales Messenger - Classic Editor</h1>
 
 		<div id="editor">
-			<h2>Sample</h2>
+			<h2>BBSM Sample</h2>
 
 			<p>
-				This is a custom extension build instance of the
+				This is an instance of the
 				<a
 					href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor"
 					>classic editor build</a
@@ -40,9 +40,8 @@
 
 		<script src="../build/ckeditor.js"></script>
 		<script>
-			SalesMessengerEditor.create(document.querySelector("#editor"))
+			ClassicEditor.create(document.querySelector("#editor"))
 				.then((editor) => {
-					console.log(Array.from(editor.ui.componentFactory.names()));
 					window.editor = editor;
 				})
 				.catch((error) => {
