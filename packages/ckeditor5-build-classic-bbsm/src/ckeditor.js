@@ -113,6 +113,7 @@ BBSMEditor.builtinPlugins = [
 // Editor configuration.
 BBSMEditor.defaultConfig = {
 	toolbar: {
+		shouldNotGroupWhenFull: true,
 		items: [
 			'undo',
 			'redo',
