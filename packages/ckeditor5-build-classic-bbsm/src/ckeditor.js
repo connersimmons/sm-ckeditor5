@@ -9,7 +9,7 @@ import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classicedi
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Autolink from '@ckeditor/ckeditor5-link/src/autolink';
-import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
+// import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -23,11 +23,12 @@ import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalli
 import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+import ImageUrl from './imageurl'
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+// import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -54,8 +55,6 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
-// import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-// import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -64,7 +63,7 @@ ClassicEditor.builtinPlugins = [
 	Alignment,
 	Autoformat,
 	Autolink,
-	Base64UploadAdapter,
+	// Base64UploadAdapter,
 	BlockQuote,
 	Bold,
 	Essentials,
@@ -77,12 +76,13 @@ ClassicEditor.builtinPlugins = [
 	HorizontalLine,
 	HtmlEmbed,
 	Image,
+	ImageToolbar,
 	ImageCaption,
 	ImageInsert,
+	ImageUrl,
 	ImageResize,
 	ImageStyle,
-	ImageToolbar,
-	ImageUpload,
+	// ImageUpload,
 	Indent,
 	IndentBlock,
 	Italic,
@@ -125,13 +125,21 @@ ClassicEditor.defaultConfig = {
 			'bold',
 			'italic',
 			'underline',
-			'link',
-			'|',
 			'fontColor',
 			'fontBackgroundColor',
 			'highlight',
 			'|',
-			'alignment',
+			'link',
+			// 'mediaEmbed'
+			// 'imageInsert',
+			// 'imageUrl',
+			'htmlEmbed',
+			'|',
+			'alignment:left',
+			'alignment:center',
+			'alignment:right',
+			'alignment:justify',
+			'|',
 			'numberedList',
 			'bulletedList',
 			'outdent',
@@ -142,20 +150,44 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'specialCharacters',
 			'|',
-			// 'imageUpload',
-			// 'mediaEmbed'
-			'htmlEmbed',
-			'imageInsert',
-			'|',
 			'removeFormat',
 		]
 	},
 	image: {
+		// Configure the available styles.
+		styles: [
+			'alignLeft', 'alignCenter', 'alignRight'
+		],
+
+		// Configure the available image resize options.
+		resizeOptions: [
+			{
+				name: 'imageResize:original',
+				label: 'Original',
+				value: null
+			},
+			{
+				name: 'imageResize:50',
+				label: '50%',
+				value: '50'
+			},
+			{
+				name: 'imageResize:75',
+				label: '75%',
+				value: '75'
+			}
+		],
+
+		// You need to configure the image toolbar, too, so it shows the new style
+		// buttons as well as the resize buttons.
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
+			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
 			'|',
-			'imageTextAlternative'
+			'imageResize',
+			'|',
+			'imageTextAlternative',
+			'|',
+            'linkImage'
 		]
 	},
 	table: {
