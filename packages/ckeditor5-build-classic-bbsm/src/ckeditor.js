@@ -107,7 +107,7 @@ ClassicEditor.builtinPlugins = [
 	TableToolbar,
 	TextTransformation,
 	Underline,
-	WordCount
+	WordCount,
 ];
 
 // Editor configuration.
