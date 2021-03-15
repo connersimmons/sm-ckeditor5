@@ -38,12 +38,25 @@
 			</p>
 		</div>
 
+		<div class="ck ck-word-count" id="wc-container"></div>
+
 		<button type="button" id="log-data">Log</button>
 		<button type="button" id="log-clear">Clear and Log</button>
 
 		<script src="../build/ckeditor.js"></script>
 		<script>
-			BBSMEditor.create(document.querySelector("#editor"))
+			BBSMEditor.create(document.querySelector("#editor"), {
+				wordCount: {
+					onUpdate: (stats) => {
+						// Prints the current content statistics.
+						console.log(stats);
+						console.log(
+							`Characters: ${stats.characters}\nWords: ${stats.words}`
+						);
+						console.log(this.document.getBody().getText().length);
+					},
+				},
+			})
 				.then((editor) => {
 					window.editor = editor;
 				})

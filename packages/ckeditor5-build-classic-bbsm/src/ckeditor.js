@@ -23,7 +23,6 @@ import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalli
 import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
 import Image from '@ckeditor/ckeditor5-image/src/image';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
-import ImageUrl from './imageurl'
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
@@ -79,7 +78,6 @@ BBSMEditor.builtinPlugins = [
 	ImageToolbar,
 	ImageCaption,
 	ImageInsert,
-	ImageUrl,
 	ImageResize,
 	ImageStyle,
 	// ImageUpload,
@@ -133,7 +131,6 @@ BBSMEditor.defaultConfig = {
 			'link',
 			// 'mediaEmbed'
 			// 'imageInsert',
-			// 'imageUrl',
 			'htmlEmbed',
 			'|',
 			'alignment:left',
@@ -153,6 +150,10 @@ BBSMEditor.defaultConfig = {
 			'|',
 			'removeFormat',
 		]
+	},
+	wordCount: {
+		displayWords: true,
+		displayCharacters: true
 	},
 	image: {
 		// Configure the available styles.
