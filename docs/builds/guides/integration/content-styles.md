@@ -48,8 +48,8 @@ Below there is a full list of content styles used by the editor features. You ca
 
 ```css
 /*
- * CKEditor 5 (v23.1.0) content styles.
- * Generated on Thu, 29 Oct 2020 12:17:48 GMT.
+ * CKEditor 5 (v26.0.0) content styles.
+ * Generated on Wed, 03 Mar 2021 08:21:28 GMT.
  * For more information, check out https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/content-styles.html
  */
 
@@ -66,26 +66,47 @@ Below there is a full list of content styles used by the editor features. You ca
 	--ck-todo-list-checkmark-size: 16px;
 }
 
-/* ckeditor5-image/theme/imagestyle.css */
-.ck-content .image-style-side {
-	float: right;
-	margin-left: var(--ck-image-style-spacing);
-	max-width: 50%;
+/* ckeditor5-font/theme/fontsize.css */
+.ck-content .text-tiny {
+	font-size: .7em;
 }
-/* ckeditor5-image/theme/imagestyle.css */
-.ck-content .image-style-align-left {
-	float: left;
-	margin-right: var(--ck-image-style-spacing);
+/* ckeditor5-font/theme/fontsize.css */
+.ck-content .text-small {
+	font-size: .85em;
 }
-/* ckeditor5-image/theme/imagestyle.css */
-.ck-content .image-style-align-center {
-	margin-left: auto;
-	margin-right: auto;
+/* ckeditor5-font/theme/fontsize.css */
+.ck-content .text-big {
+	font-size: 1.4em;
 }
-/* ckeditor5-image/theme/imagestyle.css */
-.ck-content .image-style-align-right {
-	float: right;
-	margin-left: var(--ck-image-style-spacing);
+/* ckeditor5-font/theme/fontsize.css */
+.ck-content .text-huge {
+	font-size: 1.8em;
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-yellow {
+	background-color: var(--ck-highlight-marker-yellow);
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-green {
+	background-color: var(--ck-highlight-marker-green);
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-pink {
+	background-color: var(--ck-highlight-marker-pink);
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .marker-blue {
+	background-color: var(--ck-highlight-marker-blue);
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .pen-red {
+	color: var(--ck-highlight-pen-red);
+	background-color: transparent;
+}
+/* ckeditor5-highlight/theme/highlight.css */
+.ck-content .pen-green {
+	color: var(--ck-highlight-pen-green);
+	background-color: transparent;
 }
 /* ckeditor5-image/theme/image.css */
 .ck-content .image {
@@ -126,47 +147,33 @@ Below there is a full list of content styles used by the editor features. You ca
 .ck-content .image.image_resized > figcaption {
 	display: block;
 }
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .marker-yellow {
-	background-color: var(--ck-highlight-marker-yellow);
+/* ckeditor5-horizontal-line/theme/horizontalline.css */
+.ck-content hr {
+	margin: 15px 0;
+	height: 4px;
+	background: hsl(0, 0%, 87%);
+	border: 0;
 }
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .marker-green {
-	background-color: var(--ck-highlight-marker-green);
+/* ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-side {
+	float: right;
+	margin-left: var(--ck-image-style-spacing);
+	max-width: 50%;
 }
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .marker-pink {
-	background-color: var(--ck-highlight-marker-pink);
+/* ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-left {
+	float: left;
+	margin-right: var(--ck-image-style-spacing);
 }
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .marker-blue {
-	background-color: var(--ck-highlight-marker-blue);
+/* ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-center {
+	margin-left: auto;
+	margin-right: auto;
 }
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .pen-red {
-	color: var(--ck-highlight-pen-red);
-	background-color: transparent;
-}
-/* ckeditor5-highlight/theme/highlight.css */
-.ck-content .pen-green {
-	color: var(--ck-highlight-pen-green);
-	background-color: transparent;
-}
-/* ckeditor5-font/theme/fontsize.css */
-.ck-content .text-tiny {
-	font-size: .7em;
-}
-/* ckeditor5-font/theme/fontsize.css */
-.ck-content .text-small {
-	font-size: .85em;
-}
-/* ckeditor5-font/theme/fontsize.css */
-.ck-content .text-big {
-	font-size: 1.4em;
-}
-/* ckeditor5-font/theme/fontsize.css */
-.ck-content .text-huge {
-	font-size: 1.8em;
+/* ckeditor5-image/theme/imagestyle.css */
+.ck-content .image-style-align-right {
+	float: right;
+	margin-left: var(--ck-image-style-spacing);
 }
 /* ckeditor5-block-quote/theme/blockquote.css */
 .ck-content blockquote {
@@ -258,6 +265,13 @@ Below there is a full list of content styles used by the editor features. You ca
 	-ms-user-select: none;
 	user-select: none;
 }
+/* ckeditor5-media-embed/theme/mediaembed.css */
+.ck-content .media {
+	clear: both;
+	margin: 1em 0;
+	display: block;
+	min-width: 15em;
+}
 /* ckeditor5-list/theme/todolist.css */
 .ck-content .todo-list {
 	list-style: none;
@@ -325,24 +339,11 @@ Below there is a full list of content styles used by the editor features. You ca
 .ck-content .todo-list .todo-list__label .todo-list__label__description {
 	vertical-align: middle;
 }
-/* ckeditor5-media-embed/theme/mediaembed.css */
-.ck-content .media {
-	clear: both;
-	margin: 1em 0;
-	display: block;
-	min-width: 15em;
-}
 /* ckeditor5-html-embed/theme/htmlembed.css */
 .ck-content .raw-html-embed {
 	margin: 1em auto;
 	min-width: 15em;
-}
-/* ckeditor5-horizontal-line/theme/horizontalline.css */
-.ck-content hr {
-	margin: 15px 0;
-	height: 4px;
-	background: hsl(0, 0%, 87%);
-	border: 0;
+	font-style: normal;
 }
 /* ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre {

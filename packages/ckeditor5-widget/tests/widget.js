@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -11,6 +11,7 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Widget from '../src/widget';
 import WidgetTypeAround from '../src/widgettypearound/widgettypearound';
 import Typing from '@ckeditor/ckeditor5-typing/src/typing';
+import Delete from '@ckeditor/ckeditor5-typing/src/delete';
 import MouseObserver from '@ckeditor/ckeditor5-engine/src/view/observer/mouseobserver';
 import { toWidget } from '../src/utils';
 import DomEventData from '@ckeditor/ckeditor5-engine/src/view/observer/domeventdata';
@@ -132,8 +133,8 @@ describe( 'Widget', () => {
 		expect( view.getObserver( MouseObserver ) ).to.be.instanceof( MouseObserver );
 	} );
 
-	it( 'should require the WidgetTypeAround plugin', () => {
-		expect( Widget.requires ).to.have.members( [ WidgetTypeAround ] );
+	it( 'should require the WidgetTypeAround and Delete plugins', () => {
+		expect( Widget.requires ).to.have.members( [ WidgetTypeAround, Delete ] );
 	} );
 
 	it( 'should create selection over clicked widget', () => {
@@ -147,7 +148,6 @@ describe( 'Widget', () => {
 		viewDocument.fire( 'mousedown', domEventDataMock );
 
 		expect( getModelData( model ) ).to.equal( '[<widget></widget>]' );
-		sinon.assert.calledOnce( domEventDataMock.domEvent.preventDefault );
 	} );
 
 	it( 'should create selection when clicked in nested element', () => {
@@ -162,7 +162,6 @@ describe( 'Widget', () => {
 		viewDocument.fire( 'mousedown', domEventDataMock );
 
 		expect( getModelData( model ) ).to.equal( '[<widget></widget>]' );
-		sinon.assert.calledOnce( domEventDataMock.domEvent.preventDefault );
 	} );
 
 	it( 'should do nothing if clicked in non-widget element', () => {
@@ -192,7 +191,6 @@ describe( 'Widget', () => {
 		viewDocument.isFocused = true;
 		viewDocument.fire( 'mousedown', domEventDataMock );
 
-		sinon.assert.calledOnce( domEventDataMock.domEvent.preventDefault );
 		sinon.assert.notCalled( focusSpy );
 		expect( getModelData( model ) ).to.equal( '[<widget></widget>]' );
 	} );
@@ -433,7 +431,7 @@ describe( 'Widget', () => {
 				viewDocument.fire( 'keydown', domEventDataMock );
 
 				expect( getModelData( model ) ).to.equal( '<paragraph>foo</paragraph>[<widget></widget>]' );
-				sinon.assert.calledTwice( domEventDataMock.preventDefault );
+				sinon.assert.called( domEventDataMock.preventDefault );
 				sinon.assert.notCalled( keydownHandler );
 			} );
 
@@ -451,7 +449,7 @@ describe( 'Widget', () => {
 				viewDocument.fire( 'keydown', domEventDataMock );
 
 				expect( getModelData( model ) ).to.equal( '[<widget></widget>]<paragraph>foo</paragraph>' );
-				sinon.assert.calledTwice( domEventDataMock.preventDefault );
+				sinon.assert.called( domEventDataMock.preventDefault );
 				sinon.assert.notCalled( keydownHandler );
 			} );
 
@@ -916,7 +914,7 @@ describe( 'Widget', () => {
 		);
 
 		test(
-			'should not modify forward delete default behaviour in single paragraph boundaries',
+			'should not modify delete forward default behaviour in single paragraph boundaries',
 			'<paragraph>foo[]</paragraph>',
 			'forward',
 			'<paragraph>foo[]</paragraph>'
@@ -1096,7 +1094,7 @@ describe( 'Widget', () => {
 		);
 
 		test(
-			'should remove the entire empty element (deeper structure) if it is next to a widget (forward delete)',
+			'should remove the entire empty element (deeper structure) if it is next to a widget (delete forward)',
 
 			'<paragraph>foo</paragraph>' +
 			'<blockQuote><div><div><paragraph>[]</paragraph></div></div></blockQuote>' +
@@ -1127,7 +1125,7 @@ describe( 'Widget', () => {
 		);
 
 		test(
-			'should not remove the entire element which is not empty and the element is next to a widget (forward delete)',
+			'should not remove the entire element which is not empty and the element is next to a widget (delete forward)',
 
 			'<paragraph>foo</paragraph>' +
 			'<blockQuote><paragraph>Foo</paragraph><paragraph>[]</paragraph></blockQuote>' +
@@ -1223,7 +1221,7 @@ describe( 'Widget', () => {
 			scrollStub.restore();
 		} );
 
-		it( 'does nothing when editor when read only mode is enabled (forward delete)', () => {
+		it( 'does nothing when editor when read only mode is enabled (delete forward)', () => {
 			const scrollStub = sinon.stub( view, 'scrollToTheSelection' );
 			setModelData( model,
 				'<paragraph>foo</paragraph>' +

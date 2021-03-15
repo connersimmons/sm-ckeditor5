@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -15,7 +15,7 @@ import BoldEditing from '@ckeditor/ckeditor5-basic-styles/src/bold/boldediting';
 import StrikethroughEditing from '@ckeditor/ckeditor5-basic-styles/src/strikethrough/strikethroughediting';
 import LinkEditing from '@ckeditor/ckeditor5-link/src/linkediting';
 import Typing from '@ckeditor/ckeditor5-typing/src/typing';
-import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
+import ClipboardPipeline from '@ckeditor/ckeditor5-clipboard/src/clipboardpipeline';
 
 import RestrictedEditingModeEditing from './../src/restrictededitingmodeediting';
 import RestrictedEditingModeNavigationCommand from '../src/restrictededitingmodenavigationcommand';
@@ -23,6 +23,7 @@ import ItalicEditing from '@ckeditor/ckeditor5-basic-styles/src/italic/italicedi
 import BlockQuoteEditing from '@ckeditor/ckeditor5-block-quote/src/blockquoteediting';
 import TableEditing from '@ckeditor/ckeditor5-table/src/tableediting';
 import Command from '@ckeditor/ckeditor5-core/src/command';
+import env from '@ckeditor/ckeditor5-utils/src/env';
 
 describe( 'RestrictedEditingModeEditing', () => {
 	let editor, model;
@@ -720,8 +721,8 @@ describe( 'RestrictedEditingModeEditing', () => {
 
 		beforeEach( async () => {
 			editor = await VirtualTestEditor.create( {
-				plugins: [ Paragraph, BoldEditing, ItalicEditing, StrikethroughEditing, BlockQuoteEditing, LinkEditing, Typing, Clipboard,
-					RestrictedEditingModeEditing
+				plugins: [ Paragraph, BoldEditing, ItalicEditing, StrikethroughEditing, BlockQuoteEditing, LinkEditing, Typing,
+					ClipboardPipeline, RestrictedEditingModeEditing
 				]
 			} );
 			model = editor.model;
@@ -1432,7 +1433,8 @@ describe( 'RestrictedEditingModeEditing', () => {
 			beforeEach( async () => {
 				evtData = {
 					keyCode: getCode( 'A' ),
-					ctrlKey: true,
+					ctrlKey: !env.isMac,
+					metaKey: env.isMac,
 					preventDefault: sinon.spy(),
 					stopPropagation: sinon.spy()
 				};
